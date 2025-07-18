@@ -2,15 +2,15 @@ from typing import List
 from fastapi import FastAPI, UploadFile, Form, File
 from fastapi.responses import JSONResponse, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
-from google import genai
-from google.genai import types
+import google.generativeai as genai
+from google.generativeai import types
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-genai_api_key = os.environ.get("API_KEY")
-client = genai.Client(api_key=genai_api_key)
+genai.configure(api_key=os.environ.get("API_KEY"))
+client = genai.GenerativeModel("gemini-2.0-flash")
 
 # 0~5단계 시스템프롬프트 로딩
 phase_prompts = []
