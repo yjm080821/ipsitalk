@@ -45,11 +45,14 @@ async def analyze(
             mime_type = file.content_type
 
             if mime_type == "text/plain":
-                file_content = file_bytes.decode("utf-8")
-                contents.append(file_content)
+                contents.append(file_bytes.decode("utf-8"))
             elif mime_type in ["application/pdf", "image/png", "image/jpeg"]:
-                file_part = genai.Part.from_bytes(data=file_bytes, mime_type=mime_type)
-                contents.append(file_part)
+                contents.append({
+                    "inline_data": {
+                        "mime_type": mime_type,
+                        "data": file_bytes
+                    }
+                })
             else:
                 return JSONResponse(
                     status_code=400,
