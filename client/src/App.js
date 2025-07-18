@@ -142,8 +142,7 @@ function App() {
               value={userPrompt}
               onChange={(e) => setUserPrompt(e.target.value)}
               className="mt-1 block w-full p-3 border rounded-md shadow-sm"
-              placeholder="예: 활동을 기반으로 분석해줘"
-              required
+              placeholder="예: 국어 독서활동 내용을 강조해줘"
             />
           </div>
           <div>
@@ -153,7 +152,6 @@ function App() {
               multiple
               onChange={(e) => setFiles(e.target.files)}
               className="mt-1 block w-full p-2 border rounded-md"
-              required={phase === 0}
             />
           </div>
           <div className="flex flex-wrap gap-2">
