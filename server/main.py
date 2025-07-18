@@ -48,7 +48,7 @@ async def analyze(
                 file_content = file_bytes.decode("utf-8")
                 contents.append(file_content)
             elif mime_type in ["application/pdf", "image/png", "image/jpeg"]:
-                file_part = types.Part.from_bytes(data=file_bytes, mime_type=mime_type)
+                file_part = genai.Part.from_bytes(data=file_bytes, mime_type=mime_type)
                 contents.append(file_part)
             else:
                 return JSONResponse(

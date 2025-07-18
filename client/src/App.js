@@ -52,7 +52,7 @@ function App() {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/analyze", {
+      const res = await fetch("https://ipsitalk.railway.app/analyze", {
         method: "POST",
         body: formData,
       });
